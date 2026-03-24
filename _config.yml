@@ -1,0 +1,53 @@
+title: "JS's Blog"
+name: "JS"
+description: "공부 기록"
+url: "https://jaeseong-916.github.io"
+baseurl: ""
+
+theme: minimal-mistakes-jekyll
+
+# 플러그인
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-include-cache
+
+# Minimal Mistakes 설정
+minimal_mistakes_skin: "default"
+
+# 저자 정보
+author:
+  name: "Jaeseong Shin"
+  bio: "개발자"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/Jaeseong-916"
+
+# 페이지네이션
+paginate: 5
+paginate_path: /page:num/
+
+# 퍼마링크
+permalink: /:categories/:title/
+
+# 기본값
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: false
+      share: true
+      related: true
+
+# 제외 파일
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
