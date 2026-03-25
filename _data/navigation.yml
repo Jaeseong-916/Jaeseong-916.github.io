@@ -1,0 +1,39 @@
+main:
+  - title: "Python"
+    url: /categories/python/
+  - title: "Go"
+    url: /categories/go/
+  - title: "Kubernetes"
+    url: /categories/kubernetes/
+  - title: "OpenStack"
+    url: /categories/openstack/
+  - title: "System"
+    url: /categories/system/
+
+sidebar-categories:
+  - title: "Language"
+    children:
+      - title: "Python"
+        url: /categories/python/
+        icon: "fab fa-python"
+        category: "python"
+      - title: "Go"
+        url: /categories/go/
+        icon: "fab fa-golang"
+        category: "go"
+  - title: "Infrastructure"
+    children:
+      - title: "Kubernetes"
+        url: /categories/kubernetes/
+        icon: "fas fa-dharmachakra"
+        category: "kubernetes"
+      - title: "OpenStack"
+        url: /categories/openstack/
+        icon: "fas fa-cloud"
+        category: "openstack"
+  - title: "System"
+    children:
+      - title: "System"
+        url: /categories/system/
+        icon: "fas fa-terminal"
+        category: "system"

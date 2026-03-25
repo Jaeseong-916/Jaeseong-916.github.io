@@ -4,5 +4,379 @@
 
 @charset "utf-8";
 
-@import "minimal-mistakes/skins/default"; // skin
+// 폰트 크기 축소
+$doc-font-size: 12px;
+$type-size-1: 1.8em;
+$type-size-2: 1.5em;
+$type-size-3: 1.25em;
+$type-size-4: 1.1em;
+$type-size-5: 1em;
+$type-size-6: 0.85em;
+$type-size-7: 0.75em;
+$type-size-8: 0.65em;
+
+// 사이드바 폭 조정
+$right-sidebar-width-narrow: 200px;
+$right-sidebar-width: 250px;
+
+@import "minimal-mistakes/skins/dark"; // dark skin
 @import "minimal-mistakes"; // main partials
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+// ─── 사이드바 왼쪽 고정 ───
+$sidebar-fixed-width: 260px;
+
+.sidebar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: $sidebar-fixed-width !important;
+  max-height: 100vh !important;
+  overflow-y: auto;
+  padding: 1.5em 1.2em;
+  background: #1a1a2e;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 100;
+  opacity: 1 !important;
+  float: none !important;
+
+  // 스크롤바 스타일
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+}
+
+// masthead, main, footer 왼쪽 여백
+// !important로 테마의 margin-inline: auto 덮어씀
+.masthead,
+.page__footer {
+  margin-left: $sidebar-fixed-width !important;
+}
+
+#main {
+  display: block !important;
+  margin-left: $sidebar-fixed-width !important;
+  margin-right: 0 !important;
+  max-width: none !important;
+}
+
+// masthead 타이틀: 전체 너비에서 flex 중앙 정렬
+.masthead__inner-wrap {
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.masthead__menu {
+  float: none !important;
+  margin: 0 !important;
+  width: 100%;
+}
+
+.masthead .visible-links {
+  display: none !important;
+}
+
+.masthead .site-title {
+  flex: 1 !important;
+  text-align: center !important;
+}
+
+
+// 본문 가운데 정렬 — 테마 float/width 미디어쿼리 모두 덮어씀
+#main > .page,
+#main > .archive,
+#main .page,
+#main .archive {
+  max-width: 800px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  float: none !important;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+  padding-inline-end: 1em !important;
+}
+
+// ─── 저자 프로필 축소 ───
+.author__name {
+  font-size: 1.1em;
+}
+
+.author__bio {
+  font-size: 0.85em;
+}
+
+// 저자 아바타 크기 조정
+.author__avatar {
+  img {
+    max-width: 80px;
+    border-radius: 50%;
+  }
+}
+
+// ─── 코드 블록 ───
+div.highlighter-rouge,
+figure.highlight {
+  font-size: 0.82em;
+}
+
+// ─── 카테고리 사이드바 네비게이션 ───
+.category-nav {
+  margin-top: 1.5em;
+  padding-top: 1em;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  &__title {
+    font-size: 0.85em;
+    font-weight: 700;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.8em;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+
+    i {
+      color: #7b8daa;
+    }
+  }
+
+  &__count-total {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    color: #aaa;
+    font-size: 0.75em;
+    font-weight: 600;
+    min-width: 1.6em;
+    height: 1.6em;
+    padding: 0 0.4em;
+    border-radius: 999px;
+    margin-left: auto;
+  }
+
+  &__group {
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+  }
+
+  &__group-title {
+    font-size: 0.7em;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding-left: 0.2em;
+
+    &::before {
+      content: "···  ";
+      color: #555;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin: 0;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: 0.5em 0.6em;
+    border-radius: 6px;
+    color: #ccc !important;
+    text-decoration: none !important;
+    font-size: 0.85em;
+    transition: background 0.15s ease, color 0.15s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff !important;
+    }
+
+    &.active {
+      background: rgba(100, 149, 237, 0.15);
+      color: #6db3f2 !important;
+
+      .category-nav__count {
+        background: rgba(100, 149, 237, 0.25);
+        color: #6db3f2;
+      }
+
+      .category-nav__icon i {
+        color: #6db3f2;
+      }
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6em;
+    margin-right: 0.6em;
+    font-size: 1.05em;
+
+    i {
+      color: #7b8daa;
+      transition: color 0.15s ease;
+    }
+  }
+
+  &__text {
+    flex: 1;
+    font-weight: 500;
+  }
+
+  &__count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    color: #999;
+    font-size: 0.75em;
+    font-weight: 600;
+    min-width: 1.5em;
+    height: 1.5em;
+    padding: 0 0.35em;
+    border-radius: 999px;
+    margin-right: 0.3em;
+  }
+
+  &__arrow {
+    color: #555;
+    font-size: 0.7em;
+    transition: color 0.15s ease;
+  }
+}
+
+// 호버시 화살표 색상 변경
+.category-nav__link:hover .category-nav__arrow {
+  color: #999;
+}
+
+// ─── 포스트 카드 리스트 ───
+.post-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.post-card {
+  display: flex;
+  align-items: center;
+  padding: 1.2em 1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #ccc !important;
+  text-decoration: none !important;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 4px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &:hover .post-card__title {
+    color: #6db3f2;
+  }
+
+  &:hover .post-card__arrow {
+    color: #999;
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    margin-bottom: 0.4em;
+  }
+
+  &__category {
+    display: inline-block;
+    font-size: 0.7em;
+    font-weight: 700;
+    color: #6db3f2;
+    background: rgba(100, 149, 237, 0.12);
+    padding: 0.15em 0.5em;
+    border-radius: 3px;
+    letter-spacing: 0.03em;
+  }
+
+  &__date {
+    font-size: 0.75em;
+    color: #777;
+  }
+
+  &__title {
+    font-size: 1.05em;
+    font-weight: 600;
+    color: #e0e0e0;
+    margin: 0 0 0.3em 0;
+    transition: color 0.15s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__excerpt {
+    font-size: 0.82em;
+    color: #888;
+    margin: 0 0 0.4em 0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__tags {
+    display: flex;
+    gap: 0.3em;
+    flex-wrap: wrap;
+  }
+
+  &__tag {
+    font-size: 0.7em;
+    color: #888;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.15em 0.5em;
+    border-radius: 3px;
+
+    &::before {
+      content: "#";
+      opacity: 0.5;
+    }
+  }
+
+  &__arrow {
+    color: #444;
+    font-size: 0.85em;
+    margin-left: 1em;
+    flex-shrink: 0;
+    transition: color 0.15s ease;
+  }
+}

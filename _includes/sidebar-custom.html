@@ -1,0 +1,37 @@
+<nav class="category-nav">
+  <h3 class="category-nav__title">
+    <i class="fas fa-folder-open"></i> Categories
+    {% assign total = 0 %}
+    {% for post in site.posts %}{% assign total = total | plus: 1 %}{% endfor %}
+    <span class="category-nav__count-total">{{ total }}</span>
+  </h3>
+
+  {% assign cat_nav = site.data.navigation.sidebar-categories %}
+  {% for group in cat_nav %}
+    <div class="category-nav__group">
+      <span class="category-nav__group-title">{{ group.title }}</span>
+    </div>
+
+    {% if group.children %}
+      <ul class="category-nav__list">
+        {% for child in group.children %}
+          {% assign cat_count = 0 %}
+          {% for cat in site.categories %}
+            {% if cat[0] == child.category %}
+              {% assign cat_count = cat[1].size %}
+            {% endif %}
+          {% endfor %}
+          <li class="category-nav__item">
+            <a href="{{ child.url | relative_url }}"
+               class="category-nav__link{% if page.url == child.url %} active{% endif %}">
+              <span class="category-nav__icon"><i class="{{ child.icon }}"></i></span>
+              <span class="category-nav__text">{{ child.title }}</span>
+              <span class="category-nav__count">{{ cat_count }}</span>
+              <span class="category-nav__arrow"><i class="fas fa-chevron-right"></i></span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endfor %}
+</nav>
