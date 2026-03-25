@@ -4,7 +4,7 @@ description: "공부 기록"
 url: "https://jaeseong-916.github.io"
 baseurl: ""
 
-theme: minimal-mistakes-jekyll
+remote_theme: "mmistakes/minimal-mistakes@4.28.0"
 
 # 플러그인
 plugins:
@@ -13,6 +13,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-include-cache
+  - jekyll-remote-theme
 
 # Minimal Mistakes 설정
 minimal_mistakes_skin: "dark"
